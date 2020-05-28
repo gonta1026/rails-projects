@@ -1,0 +1,40 @@
+.title {
+  text-align: center;
+  font-size: 60px;
+  margin: 30px;
+}
+.form-groups {
+  &__label {
+    font-size: 18px;
+  }
+  &__field {
+    width: 100%;
+    font-size: 18px;
+    height: 46px;
+    padding: 0 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: 0;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+  &__content {
+    width: 50%;
+    font-size: 15px;
+    padding: 15px 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    line-height: 1.5;
+    height: 150px;
+    display: block;
+  }
+}
+.btn-primary {
+  margin-top: 20px;
+}
+.alert-warning ul li {
+  list-style: none;
+  padding: 5px;
+  font-size: 15px;
+}

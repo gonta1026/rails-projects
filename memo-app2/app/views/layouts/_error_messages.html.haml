@@ -1,0 +1,5 @@
+- if @memo.errors.any?
+  .alert.alert-warning
+    %ul
+      - @memo.errors.full_messages.each do |message|
+        %li= message

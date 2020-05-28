@@ -1,0 +1,16 @@
+/ メモ編集ページ
+.container
+  %h2.title Edit Memo
+  = form_with( model: @memo, url: "/memos/#{@memo.id}", local: true, method: :patch) do |f|
+    = render 'layouts/error_messages', model: f.object
+    .from-groups
+      = f.label "category", class: "form-groups__label"
+      = f.select :category_id, options_from_collection_for_select(@categories, :id, :name), {value: "#{@memo.category.name}",}, {class: 'form-groups__field'}
+    .form-groups
+      = f.label "title", class: "form-groups__label"
+      = f.text_field :title, class: 'form-groups__field', value: "#{@memo.title}"
+    .form-groups
+      = f.label "form-content", class: "form-groups__label"
+      = f.text_area :content, class: "form-groups__content", value: "#{@memo.content} "
+
+    = f.submit "Create", class:"btn btn-primary"

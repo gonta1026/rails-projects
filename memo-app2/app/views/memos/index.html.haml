@@ -1,0 +1,7 @@
+/ 全てのメモ一覧ページ
+.container
+  %h1 Memo List
+  - @memos.each do |memo|
+    = render memo
+%footer.foot
+  = paginate(@memos)

@@ -1,0 +1,35 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title MemoApp2
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          %ul.nav.navbar-nav.navbar-right
+            - if user_signed_in?
+              %li
+                %a{:href => "/users/#{current_user.id}"}= current_user.nickname
+              %li= link_to "New Memo", "/memos/new", class: 'get'
+              %li= link_to "Log Out", destroy_user_session_path, method: :delete
+            - else
+              %li= link_to "Sign Up", new_user_registration_path, class: 'post'
+              %li= link_to "Log In", new_user_session_path, class: 'post'
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a{:href => "/"} Memo App
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                Category
+                %span.caret
+              %ul.dropdown-menu
+                - @categories.each do |category|
+                  %li
+                    %a{:href => "/categories/#{category.id}"}= category.name
+    = yield

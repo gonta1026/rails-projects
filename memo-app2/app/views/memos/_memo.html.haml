@@ -1,0 +1,15 @@
+.memo-box.col-xs-6
+  - unless controller_name == "users"
+    %span.name> 投稿者
+      #{memo.user.nickname}
+  .panel.panel-primary
+    .panel-heading
+      = memo.title
+      - unless controller_name == "categories"
+        %p#category_name= memo.category.name
+      - if user_signed_in? && current_user.id == memo.user_id
+        .buttons
+          = link_to "", "/memos/#{memo.id}/edit", class: "glyphicon glyphicon-edit"
+          = link_to "", "/memos/#{memo.id}", method: :delete, class: "glyphicon glyphicon-trash",data: { confirm: '削除しますか？' }
+    .panel-body
+      = memo.content

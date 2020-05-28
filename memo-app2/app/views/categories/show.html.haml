@@ -1,0 +1,8 @@
+.container
+  %h1
+    = @category.name
+    's Memo
+  - @memos.each do |memo|
+    = render memo
+%footer.foot
+  = paginate(@memos)
